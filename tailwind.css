@@ -1,0 +1,28 @@
+/* this file is just a template for generating the real css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @variants hover {
+    .nudge {
+      transform: translate3d(0, -4px, 0);
+    }
+    @keyframes fadeInUp {
+      from {
+        transform: translate3d(0,20px,0);
+        opacity: 0;
+      }
+
+      to {
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+    }
+    .animate-fade-in-up {
+      animation-fill-mode: both;
+      animation-name: fadeInUp;
+      animation-duration: 1s;
+    }
+  }
+}
