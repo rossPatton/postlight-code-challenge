@@ -11,6 +11,8 @@ You will still need to generate css with tailwind, which you can do with:
 Then just run:
 `parcel src/index.html`
 
-You shouldn't need to do anything else, parcel should handle installation of all dependencies when run, should setup the dev server at `http://localhost:1234`.
+You shouldn't need to do anything else, parcel should handle installation of all dependencies when run and setup the dev server at `http://localhost:1234`.
 
-To deploy to production, run `parcel build src/index.html`
+To deploy to production, follow these steps:
+- Run `parcel build src/index.html --public-url ./postlight-code-challenge`
+- If deploying to github pages, you can deploy the `dist` folder to a `gh-pages` branch in your repo by running: `npm run push-gh-pages`. This will take the `dist` folder on your local machine, and override whatever is on your `gh-pages` branch with it.

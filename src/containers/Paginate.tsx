@@ -23,7 +23,7 @@ const PaginateContainer = (props: Props) => {
 
   useDidUpdate(() => {
     page = 1;
-    props.history.push('/');
+    props.history.push('/postlight-code-challenge/');
   }, [title]);
 
   const activePage = parseInt(page, 10);
@@ -48,7 +48,7 @@ const PaginateContainer = (props: Props) => {
             {activePage <= 1 && 'Previous'}
             {activePage > 1 && (
               <Link
-                to={`/${activePage - 1}`}
+                to={`/postlight-code-challenge/${activePage - 1}`}
                 className="underline block ml-2 mr-2" >
                 Previous
               </Link>
@@ -57,7 +57,7 @@ const PaginateContainer = (props: Props) => {
           {pages.map((_, i) => {
             const pageNo = i + 1;
             const isActive = activePage === pageNo;
-            const to = `/${pageNo}`;
+            const to = `/postlight-code-challenge/${pageNo}`;
 
             return (
               <li key={i}>
@@ -80,7 +80,7 @@ const PaginateContainer = (props: Props) => {
             {activePage >= pages.length - 1 && 'Next'}
             {activePage < pages.length - 1 && (
               <Link
-                to={`/${activePage + 1}`}
+                to={`/postlight-code-challenge/${activePage + 1}`}
                 className="underline block ml-2 mr-2" >
                 Next
               </Link>

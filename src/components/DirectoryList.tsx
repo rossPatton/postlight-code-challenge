@@ -7,7 +7,7 @@ export const DirectoryList = (props: Props) => (
     {props.directory.map((d, i) => (
       <li key={i}>
         <Link
-          to={`/user/${d.id}`}
+          to={`/postlight-code-challenge/user/${d.id}`}
           className="bg-gray-100 dark:bg-gray-700 border flex flex-col items-center p-2 rounded-lg text-center hover:nudge transition-transform">
           <img
             alt=""

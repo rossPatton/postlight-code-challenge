@@ -25,12 +25,14 @@ const Home = withRouter((props) => {
 
   return (
     <>
-      <div className="flex flex-row items-baseline justify-center">
+      <div className="flex flex-col md:flex-row items-baseline justify-center mb-4">
         <form
-          className="flex justify-center items-baseline mr-4 w-3/12"
+          className="flex flex-col md:flex-row justify-center items-baseline mr-4 w-full md:w-6/12"
           // this will do an actual DB query and redirect to a results page
-          onSubmit={() => {
-            props.history.push(`/search/${search}`);
+          onSubmit={ev => {
+            ev.preventDefault();
+            if (search === '') return;
+            props.history.push(`/postlight-code-challenge/search/${search}`);
           }}>
           <input
             autoComplete="on"
@@ -40,13 +42,13 @@ const Home = withRouter((props) => {
             onChange={ev => setState(ev.currentTarget.value)}
             value={search}
           />
-          <button className="border p-2 rounded-md whitespace-nowrap">
-            Or query DB
+          <button className="border p-2 rounded-md whitespace-nowrap w-full">
+            Or query DB for exact match
           </button>
         </form>
         <select
           // you need to fix the pagination bug
-          className="dark:bg-gray-700 border p-3 rounded-md w-3/12"
+          className="dark:bg-gray-700 border p-3 rounded-md w-full md:w-3/12"
           onChange={ev => onChange(ev.currentTarget.value)}>
           <option value="">Or filter by title:</option>
           <option value="Mr">Mr</option>

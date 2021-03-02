@@ -13,9 +13,9 @@ export const App = () => (
       <Switch>
         <DBProvider>
           <main className="dark:bg-gray-700 dark:text-white p-20">
-            <Route exact path="/:page?" component={Home} />
-            <Route path="/user/:id" component={User} />
-            <Route path="/search/:query" component={SearchResults} />
+            <Route exact path="/postlight-code-challenge/:page?" component={Home} />
+            <Route path="/postlight-code-challenge/user/:id" component={User} />
+            <Route path="/postlight-code-challenge/search/:query?" component={SearchResults} />
           </main>
         </DBProvider>
       </Switch>
