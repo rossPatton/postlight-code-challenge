@@ -4,6 +4,7 @@ import * as H from 'history';
 import React from 'react';
 
 import { getSliceOfArray } from '../utils/getSliceOfArray';
+import { useDidUpdate } from '../utils/useDidUpdate';
 
 // normally, I would separate types, constants, etc, into a separate file
 // and group everything in folders
@@ -12,11 +13,19 @@ type Props = RouteComponentProps<any> & {
   items: ts.Directory,
   location: H.Location,
   render: (itemsToRender: ts.Directory) => React.ReactNode,
+  title: ts.Titles,
 };
 
+// let prevTitle = '';
 const PaginateContainer = (props: Props) => {
-  const { count = 12, items = [], match: { params = {} } = {} } = props;
-  const { page = 1 } = params;
+  const { count = 12, items = [], match: { params = {} } = {}, title } = props;
+  let { page = 1 } = params;
+
+  useDidUpdate(() => {
+    page = 1;
+    props.history.push('/');
+  }, [title]);
+
   const activePage = parseInt(page, 10);
 
   // a _.range equivalent. sort of, for rendering the pagination

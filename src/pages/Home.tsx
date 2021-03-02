@@ -27,19 +27,22 @@ const Home = withRouter((props) => {
     <>
       <div className="flex flex-row items-baseline justify-center">
         <form
-          className="flex justify-center mr-4 w-3/12"
+          className="flex justify-center items-baseline mr-4 w-3/12"
           // this will do an actual DB query and redirect to a results page
           onSubmit={() => {
             props.history.push(`/search/${search}`);
           }}>
           <input
             autoComplete="on"
-            className="dark:bg-gray-700 border mb-4 p-2 pl-4 pr-4 rounded-md text-center w-full"
+            className="dark:bg-gray-700 border mb-4 p-2 pl-4 pr-4 rounded-md text-center w-full mr-2"
             type="search"
-            placeholder="Search for someone by name"
+            placeholder="Filter by first name"
             onChange={ev => setState(ev.currentTarget.value)}
             value={search}
           />
+          <button className="border p-2 rounded-md whitespace-nowrap">
+            Or query DB
+          </button>
         </form>
         <select
           // you need to fix the pagination bug
@@ -53,6 +56,7 @@ const Home = withRouter((props) => {
       </div>
       {directoryToRender && (
         <Paginate
+          title={filterKey as ts.Titles}
           items={directoryToRender}
           render={(paginatedDirectory) => (
             <DirectoryList
