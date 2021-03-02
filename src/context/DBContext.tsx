@@ -23,7 +23,7 @@ db.open().catch(err => {
 
 type Props = { children: React.ReactNode };
 export const DBProvider = (props: Props) => {
-  const [directory, setState] = useState([]);
+  const [directory, setState] = useState([] as ts.Directory);
 
   useEffect(() => {
     const fetchData = async () => {
