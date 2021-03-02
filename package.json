@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "buildCSS": "NODE_ENV=production npx tailwindcss-cli@latest build ./tailwind.css -o ./src/style.css"
+    "buildCSS": "NODE_ENV=production npx tailwindcss-cli@latest build ./tailwind.css -o ./src/style.css",
+    "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
   },
   "keywords": [],
   "author": "",
