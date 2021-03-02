@@ -7,7 +7,7 @@ namespace ts {
     }
   };
 
-  declare type Titles = 'Mr' | 'Miss' | 'Mrs' | "Madame" | "Monsieur" | "Mademoiselle";
+  declare type Titles = '' | 'Mr' | 'Miss' | 'Mrs' | "Madame" | "Monsieur" | "Mademoiselle";
 
   declare type DirectoryListing = Readonly<{
     email: string,

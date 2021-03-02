@@ -10,8 +10,8 @@ type tObjWithScore = {
 type tOpts = {
   // if dealing with a big list, we might want to filter it first by some criteria
   prefilter?: { key: string, value: string },
-  input?: any[],
-  key?: string,
+  input?: ts.Directory,
+  key?: 'fname',
   search?: string,
 };
 
@@ -56,15 +56,11 @@ export const fuzzyScore = (search: string = '', string: string = '') => {
 // takes an array of objects, returns a sorted and filtered array
 // defaults to fuzzy matching against a 'name' key
 // but can filter by any key, as long as the value is a string
-export const fuzzFilterList = (opts: tOpts) => {
+export const fuzzFilterList = (opts: tOpts): ts.Directory => {
   let { input = [] } = opts;
-  const {
-    prefilter = null,
-    key,
-    search,
-  } = opts;
+  const { key, search } = opts;
 
-  if (key === '' && search === '') return input;
+  if (!key && search === '') return input;
 
   if (key && search === '') {
     const filtered = input.filter(item => {
@@ -72,11 +68,6 @@ export const fuzzFilterList = (opts: tOpts) => {
       return doesItMatch;
     });
     return filtered;
-  }
-
-  // remove a set from the list before fuzzy matching
-  if (prefilter) {
-    input = input.filter(item => item[prefilter.key] !== prefilter.value);
   }
 
   const scores = input.map(obj => {

@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
 
 import { DBContext } from '../context/DBContext';
 import { DirectoryList } from '../components/DirectoryList';
 import { Paginate } from '../containers/Paginate';
 import { fuzzFilterList } from '../utils/fuzz';
 
-const Home = withRouter((props) => {
+type Props = RouteComponentProps
+const Home = withRouter((props: Props) => {
   const { directory }: { directory: ts.Directory } = useContext(DBContext);
   const [search, setState] = useState('');
   const [filterKey, onChange] = useState('');
